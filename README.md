@@ -1,2 +1,1 @@
-# emoji-count
-emoji count
+# emoji count
