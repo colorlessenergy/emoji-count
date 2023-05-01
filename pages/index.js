@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
 
+import Modal from '@/components/Modal/Modal';
+
 export default function Home() {
     const [emojis, setEmojis] = useState([
         {
@@ -44,6 +46,10 @@ export default function Home() {
         return false;
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(previousIsModalOpen => !previousIsModalOpen);
+    };
     return (
         <>
             <Head>
@@ -58,13 +64,35 @@ export default function Home() {
                 {emojis.map(({ emoji, count, clicked }, index) => {
                     return (
                         <button
-                            className={clicked ? 'active' : ''}
+                            className={
+                                clicked ? 'emoji-button active' : 'emoji-button'
+                            }
                             key={emoji}
                             onClick={() => handleUpdateEmojiCount(index)}>
                             {count} {emoji}
                         </button>
                     );
                 })}
+
+                <button
+                    className="add-emoji-button"
+                    title="add emoji"
+                    onClick={toggleModal}>
+                    ...
+                </button>
+
+                <Modal isOpen={isModalOpen} toggleModal={toggleModal}>
+                    <button
+                        className="close-modal-button"
+                        onClick={toggleModal}>
+                        x
+                    </button>
+
+                    <h2 className="select-emoji-title">select emoji to add</h2>
+                    <button className="select-emoji-button">🔥</button>
+                    <button className="select-emoji-button">❤️</button>
+                    <button className="select-emoji-button">🎈</button>
+                </Modal>
             </div>
         </>
     );

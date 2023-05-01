@@ -1,14 +1,17 @@
 body {
     box-sizing: border-box;
     margin: 0;
+
+    font-family: monospace;
+    font-size: 20px;
+}
+
+body.modal-is-open {
+    overflow: hidden;
 }
 
 button {
-    border: 1px solid #c9c9c9;
-    border-radius: 20px;
-    margin-right: 4px;
-    min-height: 40px;
-    min-width: 120px;
+    border: 0;
     padding: 0;
 
     background-color: transparent;
@@ -17,16 +20,57 @@ button {
     font-size: 20px;
 }
 
-button:hover {
-    background-color: #eaeaea;
-}
-
 .buttons-container {
     margin-top: 20px;
     margin-left: 10px;
 }
 
+.emoji-button {
+    border: 1px solid #c9c9c9;
+    border-radius: 20px;
+    margin-right: 4px;
+    min-height: 40px;
+    min-width: 120px;
+}
+
+.emoji-button:hover,
+.select-emoji-button:hover {
+    background-color: #eaeaea;
+}
+
+.add-emoji-button {
+    letter-spacing: -5px;
+}
+
+.select-emoji-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.select-emoji-button {
+    border: 1px solid #c9c9c9;
+    margin-right: 10px;
+    padding: 10px;
+
+    font-size: 30px;
+}
+
 .active {
     border-color: #e9c505;
     border-width: 2px;
+}
+
+.close-modal-button {
+    border: 1px solid #000;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+
+    background-color: #ffffff;
 }
