@@ -1,20 +1,20 @@
-import { useState } from "react";
-import Head from "next/head";
+import { useState } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
     const [emojis, setEmojis] = useState([
         {
-            emoji: "👍",
+            emoji: '👍',
             count: 100,
             clicked: false
         },
         {
-            emoji: "🤣",
+            emoji: '🤣',
             count: 0,
             clicked: false
         },
         {
-            emoji: "🎊",
+            emoji: '🎊',
             count: 50,
             clicked: false
         }
@@ -23,7 +23,7 @@ export default function Home() {
     const handleUpdateEmojiCount = index => {
         let cloneEmojis = JSON.parse(JSON.stringify(emojis));
         const previousAddedEmojiIndex = getPreviousAddedEmojiIndex();
-        if (typeof previousAddedEmojiIndex === "number") {
+        if (typeof previousAddedEmojiIndex === 'number') {
             cloneEmojis[previousAddedEmojiIndex].clicked = false;
             cloneEmojis[previousAddedEmojiIndex].count -= 1;
         }
@@ -58,10 +58,9 @@ export default function Home() {
                 {emojis.map(({ emoji, count, clicked }, index) => {
                     return (
                         <button
-                            className={clicked ? "active" : ""}
+                            className={clicked ? 'active' : ''}
                             key={emoji}
-                            onClick={() => handleUpdateEmojiCount(index)}
-                        >
+                            onClick={() => handleUpdateEmojiCount(index)}>
                             {count} {emoji}
                         </button>
                     );
