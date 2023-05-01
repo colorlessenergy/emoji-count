@@ -11,13 +11,28 @@ export default function Home() {
             clicked: false
         },
         {
+            emoji: '🎊',
+            count: 50,
+            clicked: false
+        },
+        {
             emoji: '🤣',
             count: 0,
             clicked: false
         },
         {
-            emoji: '🎊',
-            count: 50,
+            emoji: '🔥',
+            count: 0,
+            clicked: false
+        },
+        {
+            emoji: '❤️️',
+            count: 0,
+            clicked: false
+        },
+        {
+            emoji: '🎈',
+            count: 0,
             clicked: false
         }
     ]);
@@ -50,6 +65,12 @@ export default function Home() {
     const toggleModal = () => {
         setIsModalOpen(previousIsModalOpen => !previousIsModalOpen);
     };
+
+    const handleSelectEmoji = index => {
+        handleUpdateEmojiCount(index);
+        toggleModal();
+    };
+
     return (
         <>
             <Head>
@@ -62,6 +83,8 @@ export default function Home() {
             </Head>
             <div className="buttons-container">
                 {emojis.map(({ emoji, count, clicked }, index) => {
+                    if (count === 0) return null;
+
                     return (
                         <button
                             className={
@@ -89,9 +112,17 @@ export default function Home() {
                     </button>
 
                     <h2 className="select-emoji-title">select emoji to add</h2>
-                    <button className="select-emoji-button">🔥</button>
-                    <button className="select-emoji-button">❤️</button>
-                    <button className="select-emoji-button">🎈</button>
+                    {emojis.map(({ emoji, count }, index) => {
+                        if (count !== 0) return null;
+
+                        return (
+                            <button
+                                className="select-emoji-button"
+                                onClick={() => handleSelectEmoji(index)}>
+                                {emoji}
+                            </button>
+                        );
+                    })}
                 </Modal>
             </div>
         </>
