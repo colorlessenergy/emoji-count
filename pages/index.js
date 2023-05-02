@@ -114,6 +114,7 @@ export default function Home() {
                     <h2 className="select-emoji-title">select emoji to add</h2>
                     {emojis.map(({ emoji, count }, index) => {
                         if (count !== 0) return null;
+
                         return (
                             <button
                                 className="select-emoji-button"
