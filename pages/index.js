@@ -107,6 +107,7 @@ export default function Home() {
                 <Modal isOpen={isModalOpen} toggleModal={toggleModal}>
                     <button
                         className="close-modal-button"
+                        title="close"
                         onClick={toggleModal}>
                         x
                     </button>
